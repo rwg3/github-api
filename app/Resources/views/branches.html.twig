@@ -2,14 +2,11 @@
 
 {% block body %}
     <div class="container">
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>All Branches</h4></li>
-    {% for branch in branches %}
-        <li class="collection-item">
-        <strong>{{branch.name}}</strong>
-        </li>
-   
-    {% endfor %} 
-    </ul>
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>All Branches</h4></li>
+                {% for branch in branches %}
+                    <li class="collection-item"><strong>{{branch.name}}</strong></li>
+                {% endfor %} 
+        </ul>
     </div>
 {% endblock %}
