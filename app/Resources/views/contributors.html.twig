@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>Top 10 Contributors to the Symfony Framework</h4></li>
+            {% for contributor in contributors|slice(0, 10) %}
+
+                    <li class="collection-item avatar">
+                      <img src="{{ contributor.avatar_url }}" alt="" class="circle">
+                      <span class="title"><a href="{{ contributor.html_url }}" target="_blank">{{ contributor.login }}</a></span>
+                      <p>
+                         Number of contributions: {{contributor.contributions}}
+                      </p>
+                      
+
+                    </li>
+
+
+
+
+            {% endfor %} 
+        </ul>
+    </div>
+{% endblock %}
