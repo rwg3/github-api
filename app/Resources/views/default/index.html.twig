@@ -56,8 +56,42 @@
 
     </div>
     <br><br>
-
+    
     <div class="section">
+        <canvas id="participationChart" width="400" height="200"></canvas>
     </div>
   </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById("participationChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{participation.all|json_encode|raw}},
+                datasets: [{
+                    label: '# of Commits Per Week',
+                    data: {{participation.all|json_encode|raw}},
+
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }],
+                    xAxes: [{
+                            display:false,
+                    }]
+                }
+            }
+        });
+</script>
 {% endblock %}

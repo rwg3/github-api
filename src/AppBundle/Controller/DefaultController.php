@@ -13,7 +13,13 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {      
-        return $this->render('default/index.html.twig');
+        $client = new \Github\Client();
+        $response = $client->getHttpClient()->get('repos/symfony/symfony/stats/participation');
+        $participation = \Github\HttpClient\Message\ResponseMediator::getContent($response);
+        
+        return $this->render('default/index.html.twig', [
+            'participation' => $participation
+        ]);
     }
     /**
      * @Route("/branches", name="branches")
