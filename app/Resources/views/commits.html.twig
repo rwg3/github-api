@@ -6,7 +6,7 @@
             <li class="collection-header"><h4>Most Recent Commits</h4></li>
             {% for commit in commits %}
                 <li class="collection-item"><a href="{{commit.html_url}}" target="_blank">{{commit.commit.message}}</a><br>
-                    <strong>{{commit.author.login}}</strong> committed at {{commit.commit.committer.date}}
+                    <strong>{{commit.author.login|default('NULL')}}</strong> committed at {{commit.commit.committer.date}}
                 </li>
             {% endfor %} 
         </ul>
